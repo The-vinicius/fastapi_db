@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 import uvicorn
+import os
 from fastapi import FastAPI, Depends
 
 import banco, consulta, dados
@@ -30,4 +31,5 @@ async def read_play(play_id: int, db: Session= Depends(get_db)):
     return consulta.get_play(db=db, play_id=play_id)
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    port = int(os.environ.get("PORT", 5000))
+    uvicorn.run(app, host='0.0.0.0', port=port)

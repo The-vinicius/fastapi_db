@@ -30,5 +30,3 @@ async def teste_play(play: dados.Play, db:  Session = Depends(get_db)):
 async def read_play(play_id: int, db: Session= Depends(get_db)):
     return consulta.get_play(db=db, play_id=play_id)
 
-if __name__ == '__main__':
-    uvicorn.run(app, debug=True)
